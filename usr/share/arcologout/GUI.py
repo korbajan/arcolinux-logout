@@ -1,4 +1,3 @@
-
 # =====================================================
 #        Authors Brad Heffernan and Erik Dubois
 # =====================================================
@@ -149,11 +148,19 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk, fn):
             self.imageh = Gtk.Image().new_from_pixbuf(ph)
             self.Eh.add(self.imageh)
 
+    self.images = {'shutdown': self.imagesh,
+                   'restart': self.imager,
+                   'suspend': self.images,
+                   'lock': self.imagelk,
+                   'logout': self.imagelo,
+                   'cancel': self.imagec,
+                   'hibernate': self.imageh}
+
     self.lbl1 = Gtk.Label()
     self.lbl1.set_markup("<span size=\"" + str(self.font) + "000\">Shutdown ({})</span>".format(self.binds['shutdown']))
     self.lbl1.set_name("lbl")
     self.lbl2 = Gtk.Label()
-    self.lbl2.set_markup("<span size=\"" + str(self.font) + "000\">Reboot ({})</span>".format(self.binds['restart']))
+    self.lbl2.set_markup("<span size=\"" + str(self.font) + "000\">Restart ({})</span>".format(self.binds['restart']))
     self.lbl2.set_name("lbl")
     self.lbl3 = Gtk.Label()
     self.lbl3.set_markup("<span size=\"" + str(self.font) + "000\">Suspend ({})</span>".format(self.binds['suspend']))
@@ -168,9 +175,18 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk, fn):
     self.lbl6.set_markup("<span size=\"" + str(self.font) + "000\">Cancel ({})</span>".format(self.binds['cancel']))
     self.lbl6.set_name("lbl")
     self.lbl7 = Gtk.Label()
-    self.lbl7.set_markup("<span size=\"" + str(self.font) + "000\">Hibernate ({})</span>".format(self.binds['hibernate']))
+    self.lbl7.set_markup(
+        "<span size=\"" + str(self.font) + "000\">Hibernate ({})</span>".format(self.binds['hibernate']))
     self.lbl7.set_name("lbl")
-    
+
+    self.labels = {'shutdown': self.lbl1,
+                   'restart': self.lbl2,
+                   'suspend': self.lbl3,
+                   'lock': self.lbl4,
+                   'logout': self.lbl5,
+                   'cancel': self.lbl6,
+                   'hibernate': self.lbl7}
+
     vbox1.pack_start(self.Esh, False, False, 0)
     vbox1.pack_start(self.lbl1, False, False, 0)
     vbox2.pack_start(self.Er, False, False, 0)
@@ -205,7 +221,7 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk, fn):
     mainbox2.pack_start(hbox1, True, False, 0)
 
     # mainbox4.pack_start(self.Elig, False, False, 0)
-    
+
     # mainbox3.pack_end(mainbox4, False, False, 0)
 
     # spacers
@@ -238,7 +254,7 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk, fn):
     lbl11 = Gtk.Label(label="Font size:")
     # lbl11 = Gtk.Label(label="Wallpaper:")
     try:
-        vals = self.opacity*100
+        vals = self.opacity * 100
         ad1 = Gtk.Adjustment(vals, 0, 100, 5, 10, 0)
     except:
         ad1 = Gtk.Adjustment(60, 0, 100, 5, 10, 0)
@@ -333,7 +349,8 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk, fn):
     hbox8 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=20)
 
     plbl = Gtk.Label()
-    plbl.set_markup("<span size=\"large\">You can change the lockscreen wallpaper\nwith <b>Arcolinux BetterLockScreen</b></span>")
+    plbl.set_markup(
+        "<span size=\"large\">You can change the lockscreen wallpaper\nwith <b>Arcolinux BetterLockScreen</b></span>")
 
     hbox8.pack_end(plbl, False, False, 10)
 
