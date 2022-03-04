@@ -25,6 +25,7 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk, fn):
 
     self.add(overlayFrame)
 
+    # ArcoLogoutSettingsButtons start
     self.Eset = Gtk.EventBox()
     self.Eset.set_name("settings")
     self.Eset.connect("button_press_event", self.on_click, self.binds['settings'])
@@ -62,6 +63,8 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk, fn):
 
     hbox1 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=30)
 
+
+    # ArcoLogoutActionsButtons start:
     self.Esh = Gtk.EventBox()
     self.Esh.connect("button_press_event", self.on_click, self.binds['shutdown'])
     self.Esh.add_events(Gdk.EventMask.ENTER_NOTIFY_MASK)  # 1

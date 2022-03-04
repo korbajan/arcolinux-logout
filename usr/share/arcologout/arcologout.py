@@ -78,6 +78,7 @@ class TransparentWindow(Gtk.Window):
         if not fn.os.path.isfile(fn.home + "/.config/arcologout/arcologout.conf"):
             shutil.copy(fn.root_config, fn.home + "/.config/arcologout/arcologout.conf")
 
+
         # s = Gdk.Screen.get_default()
         # self.width = s.width()
         # height = s.height()
