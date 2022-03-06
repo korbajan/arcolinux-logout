@@ -113,9 +113,8 @@ def get_config(self, Gdk, Gtk, config):
 
 
 def _get_logout():
-    out = subprocess.run(["sh", "-c", "env | grep DESKTOP_SESSION"],
-                         shell=False, stdout=subprocess.PIPE)
-    desktop = out.stdout.decode().split("=")[1].strip()
+    desktop = subprocess.run([f"{home}/.bin/get_current_desktop"],
+                         shell=False, stdout=subprocess.PIPE).stdout.decode().strip()
 
     print("Your desktop is " + desktop)
     if desktop in ("herbstluftwm", "/usr/share/xsessions/herbstluftwm"):
